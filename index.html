@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sammamish Vending - Premium Vending Machine Services</title>
+    <style>
+        :root {
+            --primary-color: #2d7a8e;
+            --secondary-color: #e6813d;
+            --dark-bg: #1f2120;
+            --light-bg: #fcfcf9;
+            --text-dark: #132d3a;
+            --text-light: #f5f5f5;
+            --border-color: #a7a9a9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e5e6f 100%);
+            color: var(--text-light);
+            padding: 80px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .cta-button:hover {
+            background: #d67030;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 80px;
+        }
+
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Why Choose Us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 25px;
+            background: #f9f9f9;
+            border-radius: 6px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        /* Locations Section */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .location-card {
+            background: white;
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .location-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 60px 20px;
+            border-radius: 8px;
+            margin-bottom: 60px;
+        }
+
+        .contact-section h2 {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .contact-info strong {
+            display: block;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                gap: 15px;
+                width: 100%;
+                margin-top: 15px;
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            nav .nav-links {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .highlight {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a class="logo" href="#home">Sammamish Vending</a>
+            <div class="nav-links">
+                <a onclick="scrollTo('services')">Services</a>
+                <a onclick="scrollTo('why-us')">Why Us</a>
+                <a onclick="scrollTo('locations')">Locations</a>
+                <a onclick="scrollTo('contact')">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Modern Vending Solutions for Your Business</h1>
+            <p>Premium snacks, beverages, and healthy options delivered to your location.</p>
+            <button class="cta-button" onclick="scrollTo('contact')">Get Started Today</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🏥 Healthcare Facilities</h3>
+                    <p>Convenient refreshment solutions for hospitals, clinics, and medical offices. Perfect for patients, staff, and visitors.</p>
+                </div>
+                <div class="service-card">
+                    <h3>💪 Fitness Centers</h3>
+                    <p>High-protein snacks and recovery drinks for gym members. Zero cost to your facility, with revenue-sharing options.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🏢 Office Buildings</h3>
+                    <p>Healthy snacks and beverages to boost employee productivity. Modern machines with mobile payment options.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🏠 Residential Communities</h3>
+                    <p>24/7 access to snacks for apartment residents. No upfront costs, complete management by our team.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🏫 Schools & Education</h3>
+                    <p>Tailored solutions for educational institutions with flexible product selection and revenue sharing.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🐾 Veterinary & Pet Clinics</h3>
+                    <p>Convenient amenities for pet owners and staff. Professional machines in clean, well-maintained condition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us">
+        <div class="container">
+            <h2>Why Choose Sammamish Vending?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>✓ Zero Upfront Costs</h3>
+                    <p>No installation fees. We handle everything for you.</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Regular Maintenance</h3>
+                    <p>Professional restocking and maintenance on a consistent schedule.</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Healthy Options</h3>
+                    <p>Premium selection of nutritious snacks and beverages.</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Modern Payment</h3>
+                    <p>Card readers and mobile payment options for customer convenience.</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Revenue Sharing</h3>
+                    <p>Flexible arrangements that benefit your facility.</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Local Service</h3>
+                    <p>Sammamish-based company with deep community roots.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations">
+        <div class="container">
+            <h2>Service Areas</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3>Sammamish</h3>
+                    <p>Our home base. We serve all of Sammamish with fast, reliable service and regular maintenance visits.</p>
+                </div>
+                <div class="location-card">
+                    <h3>Issaquah</h3>
+                    <p>Extensive experience partnering with Issaquah businesses, medical facilities, and residential communities.</p>
+                </div>
+                <div class="location-card">
+                    <h3>Surrounding Areas</h3>
+                    <p>Flexible service territory. Contact us to discuss serving your location in the greater Seattle area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-section">
+            <div class="container">
+                <h2>Ready to Partner With Us?</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <p><strong>Get in Touch</strong>Send us a message and we'll respond within 24 hours.</p>
+                        <p><strong>Email</strong>sammamishvending@gmail.com</p>
+                        <p><strong>Service Area</strong>Sammamish, Issaquah, and surrounding communities</p>
+                        <p style="margin-top: 30px; font-style: italic;">We're committed to providing professional, reliable vending solutions that work for your business.</p>
+                    </div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="business">Business/Location Name</label>
+                            <input type="text" id="business" name="business" placeholder="Your business name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your vending needs..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sammamish Vending Solutions. All rights reserved. | sammamishvending@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll function for navigation
+        function scrollTo(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Form submission - redirects to email
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const business = document.getElementById('business').value;
+            const message = document.getElementById('message').value;
+            
+            // Create email body
+            const subject = `Vending Partnership Inquiry from ${business}`;
+            const body = `Hello Sammamish Vending,\n\nI am reaching out to inquire about vending machine services for ${business}.\n\nName: ${name}\nEmail: ${email}\nBusiness: ${business}\n\nMessage:\n${message}\n\nLooking forward to hearing from you.\n\nBest regards`;
+            
+            // Redirect to email client with mailto
+            window.location.href = `mailto:sammamishvending@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+    </script>
+</body>
+</html>
